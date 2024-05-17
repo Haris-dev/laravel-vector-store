@@ -62,7 +62,7 @@ class Pinecone extends DatabaseAdapterAbstract
         return $this->client->data()
             ->vectors()
             ->delete(
-                deleteAll:true,
+                deleteAll:$request['deleteAll'],
                 namespace:$request['namespace'],
             )->json();
     }
