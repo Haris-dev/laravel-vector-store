@@ -111,7 +111,7 @@ class Pinecone extends DatabaseAdapterAbstract
     {
         assert($request instanceof PineconeUpdateRequest, new InvalidDatabaseAdapterRequestException());
 
-        return 0;
+        return [];
     }
 
     /**
