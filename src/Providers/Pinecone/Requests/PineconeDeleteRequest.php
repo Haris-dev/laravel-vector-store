@@ -8,6 +8,7 @@ class PineconeDeleteRequest extends PineconeRequestAbstract
 {
     public function __construct(
         protected ?array $ids = null,
+        protected ?string $namespace = null,
         protected bool $deleteAll = false,
         protected ?array $filter = []
     ) {
@@ -21,6 +22,13 @@ class PineconeDeleteRequest extends PineconeRequestAbstract
     public function ids(array $ids): self
     {
         $this->ids = $ids;
+
+        return $this;
+    }
+    
+    public function namespace(string $namespace): self
+    {
+        $this->namespace = $namespace;
 
         return $this;
     }

@@ -57,11 +57,13 @@ class Pinecone extends DatabaseAdapterAbstract
     {
         assert($request instanceof PineconeDeleteRequest, new InvalidDatabaseAdapterRequestException());
 
+        $request = $request->serialize();
+
         return $this->client->data()
             ->vectors()
             ->delete(
-                $request->serialize(),
-                $this->getNamespace(),
+                deleteAll:true,
+                namespace:$request['namespace'],
             )->json();
     }
 
