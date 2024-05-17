@@ -111,12 +111,7 @@ class Pinecone extends DatabaseAdapterAbstract
     {
         assert($request instanceof PineconeUpdateRequest, new InvalidDatabaseAdapterRequestException());
 
-        return $this->client->data()
-            ->vectors()
-            ->update(
-                $request->serialize(),
-                $this->getNamespace(),
-            )->json();
+        return 0;
     }
 
     /**
