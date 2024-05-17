@@ -8,6 +8,7 @@ class PineconeQueryRequest extends PineconeRequestAbstract
 {
     public function __construct(
         protected array $vector = [],
+        protected ?string $namespace = null,
         protected int $topK = 3,
         protected array $filter = [],
         protected bool $includeMetadata = true,
@@ -24,6 +25,13 @@ class PineconeQueryRequest extends PineconeRequestAbstract
     public function vector(array $vector): self
     {
         $this->vector = $vector;
+
+        return $this;
+    }
+
+    public function namespace(string $namespace): self
+    {
+        $this->namespace = $namespace;
 
         return $this;
     }

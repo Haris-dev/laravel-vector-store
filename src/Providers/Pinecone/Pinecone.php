@@ -123,11 +123,15 @@ class Pinecone extends DatabaseAdapterAbstract
     {
         assert($request instanceof PineconeQueryRequest, new InvalidDatabaseAdapterRequestException());
 
+        $request = $request->serialize();
+
         return $this->client->data()
             ->vectors()
             ->query(
-                $request->serialize(),
-                $this->getNamespace(),
+                vector:$request['vector'],
+                namespace:$request['namespace'],
+                topK:$request['topK'],
+                includeMetadata:$request['includeMetadata']
             )->json();
     }
 }
